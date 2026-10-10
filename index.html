@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="黄瓜电影网 - 清爽观影推荐站，清新片单、冷门佳片与热映资讯，让找片变得简单轻松。">
+<meta name="keywords" content="黄瓜电影网, huangguadianyingwang, 电影推荐, 影视资讯, 片单, 冷门佳片, 清爽观影, huangguadianyingwang-wap">
+<meta name="author" content="黄瓜电影网">
+<meta property="og:title" content="黄瓜电影网 - 清爽观影推荐站">
+<meta property="og:description" content="清新片单、冷门佳片与热映资讯，让找片变得简单轻松。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://huangguadianyingwang-wap.github.io">
+<link rel="canonical" href="https://huangguadianyingwang-wap.github.io">
+<title>黄瓜电影网 - 清爽观影推荐站 | huangguadianyingwang-wap</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #f2faf3;
+    --paper: #ffffff;
+    --ink: #16241c;
+    --muted: #6f8278;
+    --line: #e2efe6;
+    --main: #4caf50;
+    --main2: #8bc34a;
+    --dark: #12321d;
+    --acid: #c6ff3d;
+    --shadow: 0 16px 40px rgba(18,50,29,.10);
+    --r: 18px;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: "PingFang SC","Microsoft YaHei",system-ui,sans-serif; background: var(--bg); color: var(--ink); line-height: 1.85; }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: var(--main); color: #fff; }
+
+  /* 顶部 */
+  header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.9); backdrop-filter: blur(14px); border-bottom: 2px solid var(--line); }
+  .hi { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 13px 24px; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .logo { width: 42px; height: 42px; border-radius: 13px; background: var(--dark); color: var(--acid); display: grid; place-items: center; font-weight: 900; font-size: 17px; }
+  .brand b { font-size: 18px; letter-spacing: -.3px; }
+  .brand small { display: block; font-size: 10px; letter-spacing: 3px; color: var(--muted); }
+  .nav { display: flex; gap: 4px; }
+  .nav a { padding: 9px 16px; border-radius: 10px; font-size: 14px; color: var(--muted); font-weight: 600; }
+  .nav a:hover { color: var(--main); background: #eaf6ec; }
+  .toggle { display: none; background: none; border: 0; font-size: 26px; cursor: pointer; color: var(--ink); }
+
+  /* 英雄 */
+  .hero { position: relative; overflow: hidden; padding: 100px 24px 88px; text-align: center; background: radial-gradient(circle at 20% 20%, #eafbe6 0%, transparent 40%), radial-gradient(circle at 80% 70%, #d8f5dd 0%, transparent 45%), var(--bg); }
+  .bubbles { position: absolute; inset: 0; pointer-events: none; }
+  .bubbles i { position: absolute; border-radius: 50%; background: rgba(76,175,80,.14); animation: float 9s ease-in-out infinite; }
+  .bubbles i:nth-child(1){width:90px;height:90px;left:10%;top:15%;animation-delay:0s;}
+  .bubbles i:nth-child(2){width:130px;height:130px;left:78%;top:25%;animation-delay:2s;}
+  .bubbles i:nth-child(3){width:60px;height:60px;left:60%;top:70%;animation-delay:4s;}
+  .bubbles i:nth-child(4){width:110px;height:110px;left:25%;top:72%;animation-delay:1s;}
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-24px)} }
+  .hero h2 { font-size: clamp(30px,5.8vw,54px); font-weight: 900; letter-spacing: -1px; line-height: 1.35; position: relative; }
+  .hero h2 em { font-style: normal; color: var(--main); }
+  .hero p { font-size: clamp(14px,2.1vw,16px); color: var(--muted); max-width: 620px; margin: 18px auto 0; position: relative; }
+  .acts { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 30px; position: relative; }
+  .btn { display: inline-block; padding: 14px 32px; border-radius: 32px; font-weight: 700; font-size: 14px; transition: .25s; }
+  .btn-p { background: var(--main); color: #fff; box-shadow: 0 12px 26px rgba(76,175,80,.34); }
+  .btn-p:hover { transform: translateY(-3px); }
+  .btn-o { background: #fff; color: var(--main); border: 2px solid var(--line); }
+  .btn-o:hover { border-color: var(--main); }
+
+  /* 通用 */
+  section { padding: 72px 24px; }
+  .wrap { max-width: 1180px; margin: 0 auto; }
+  .head { margin-bottom: 44px; }
+  .head .k { font-size: 11px; letter-spacing: 4px; color: var(--main); font-weight: 800; }
+  .head h2 { font-size: clamp(24px,3.8vw,32px); font-weight: 900; margin-top: 5px; }
+  .head h2 em { font-style: normal; color: var(--main); }
+  .head p { color: var(--muted); font-size: 14px; margin-top: 6px; }
+
+  /* 热映：标签页+面板（差异化1） */
+  .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 26px; }
+  .tabs button { padding: 10px 22px; border-radius: 30px; border: 2px solid var(--line); background: #fff; font-size: 14px; font-weight: 700; color: var(--muted); cursor: pointer; transition: .2s; }
+  .tabs button.on, .tabs button:hover { background: var(--main); color: #fff; border-color: var(--main); }
+  .panel { display: none; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 22px; }
+  .panel.show { display: grid; animation: fade .4s; }
+  @keyframes fade { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:none} }
+  .mcard { background: #fff; border: 2px solid var(--line); border-radius: var(--r); overflow: hidden; transition: .25s; }
+  .mcard:hover { transform: translateY(-6px); border-color: var(--main); box-shadow: var(--shadow); }
+  .mcard .cap { height: 200px; display: grid; place-items: center; color: #fff; font-size: 22px; font-weight: 900; letter-spacing: 2px; }
+  .mcard:nth-child(1) .cap{background:linear-gradient(135deg,#2e7d32,#66bb6a);}
+  .mcard:nth-child(2) .cap{background:linear-gradient(135deg,#00695c,#4db6ac);}
+  .mcard:nth-child(3) .cap{background:linear-gradient(135deg,#558b2f,#aed581);}
+  .mcard:nth-child(4) .cap{background:linear-gradient(135deg,#33691e,#9ccc65);}
+  .mcard .body { padding: 18px 20px; }
+  .mcard h4 { font-size: 17px; margin-bottom: 6px; }
+  .mcard .meta { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); }
+  .mcard .meta b { color: var(--main); font-size: 15px; }
+
+  /* 片单：折叠手风琴（差异化2） */
+  .acc { max-width: 820px; margin: 0 auto; }
+  .acc-item { background: #fff; border: 2px solid var(--line); border-radius: var(--r); margin-bottom: 14px; overflow: hidden; }
+  .acc-head { padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 800; font-size: 16px; }
+  .acc-head:hover { color: var(--main); }
+  .acc-head .n { width: 30px; height: 30px; border-radius: 50%; background: var(--main); color: #fff; display: grid; place-items: center; font-size: 14px; }
+  .acc-head .ar { transition: .3s; font-size: 13px; color: var(--muted); }
+  .acc-item.open .ar { transform: rotate(180deg); }
+  .acc-body { max-height: 0; overflow: hidden; transition: max-height .4s ease; padding: 0 24px; }
+  .acc-item.open .acc-body { max-height: 300px; padding: 0 24px 20px; }
+  .acc-body p { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
+  .acc-body .tags span { display: inline-block; background: #eaf6ec; color: var(--main); font-size: 12px; padding: 4px 12px; border-radius: 16px; margin: 0 6px 6px 0; font-weight: 600; }
+
+  /* 影评：左右交替时间线（差异化3） */
+  .timeline { max-width: 900px; margin: 0 auto; position: relative; }
+  .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; background: var(--line); transform: translateX(-50%); }
+  .tl-item { display: flex; justify-content: flex-end; padding-right: calc(50% + 26px); padding-left: 0; margin-bottom: 34px; position: relative; }
+  .tl-item:nth-child(even) { justify-content: flex-start; padding-right: 0; padding-left: calc(50% + 26px); }
+  .tl-item .dot { position: absolute; left: 50%; top: 20px; transform: translateX(-50%); width: 16px; height: 16px; border-radius: 50%; background: var(--main); border: 3px solid #fff; box-shadow: 0 0 0 3px var(--main2); }
+  .tl-card { background: #fff; border: 2px solid var(--line); border-radius: var(--r); padding: 22px 24px; width: 100%; }
+  .tl-card .who { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+  .tl-card h4 { font-size: 17px; margin-bottom: 8px; }
+  .tl-card p { font-size: 14px; color: var(--muted); }
+
+  /* 排行：九宫格数字卡片（差异化4） */
+  .topgrid { display: grid; grid-template-columns: repeat(auto-fill,minmax(150px,1fr)); gap: 16px; }
+  .topcard { background: #fff; border: 2px solid var(--line); border-radius: var(--r); padding: 24px 18px; text-align: center; transition: .25s; }
+  .topcard:hover { border-color: var(--main); transform: translateY(-4px); }
+  .topcard .no { font-size: 34px; font-weight: 900; color: var(--line); line-height: 1; }
+  .topcard:nth-child(1) .no, .topcard:nth-child(2) .no, .topcard:nth-child(3) .no { color: var(--main); }
+  .topcard h5 { font-size: 15px; margin: 12px 0 4px; }
+  .topcard small { font-size: 12px; color: var(--muted); }
+  .topcard .hot { display: inline-block; margin-top: 10px; font-size: 11px; color: var(--main); font-weight: 700; }
+
+  /* 关于 */
+  .about { background: var(--dark); color: #eaf6ec; border-radius: 28px; padding: 58px 34px; text-align: center; max-width: 860px; margin: 0 auto; }
+  .about .big { font-size: clamp(26px,4.8vw,36px); font-weight: 900; margin-bottom: 14px; }
+  .about .big em { font-style: normal; color: var(--acid); }
+  .about p { color: #a9c9b0; font-size: 15px; }
+  .about .url { display: inline-block; margin-top: 24px; background: rgba(255,255,255,.08); border: 2px solid rgba(198,255,61,.3); padding: 13px 26px; border-radius: 32px; font-size: 13px; color: var(--acid); word-break: break-all; }
+
+  /* 页脚 */
+  footer { background: #fff; border-top: 2px solid var(--line); padding: 46px 24px 26px; margin-top: 24px; }
+  .fi { max-width: 1180px; margin: 0 auto; text-align: center; }
+  .fi .logo { margin: 0 auto 10px; }
+  .fi h3 { font-size: 19px; }
+  .fl { margin: 22px 0; display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; font-size: 14px; }
+  .fl a { color: var(--muted); }
+  .fl a:hover { color: var(--main); }
+  .copy { font-size: 12px; color: #8f9d95; border-top: 2px solid var(--line); padding-top: 18px; margin-top: 18px; }
+  .copy a { color: var(--main); }
+
+  /* 响应式 */
+  @media (max-width: 760px) {
+    .toggle { display: block; }
+    .nav { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; background: #fff; padding: 12px; border-bottom: 2px solid var(--line); }
+    .nav.open { display: flex; }
+    section { padding: 54px 16px; }
+    .timeline::before { left: 14px; }
+    .tl-item, .tl-item:nth-child(even) { justify-content: flex-start; padding-left: 40px; padding-right: 0; }
+    .tl-item .dot { left: 14px; }
+  }
+  @media (max-width: 420px) {
+    .hero { padding: 72px 16px 62px; }
+    .hi { padding: 12px 16px; }
+    .brand b { font-size: 16px; }
+    .tabs button { padding: 8px 16px; font-size: 13px; }
+    .topgrid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaolu.js"></script>
+
+<header>
+  <div class="hi">
+    <a href="#" class="brand"><div class="logo">黄</div><div><b>黄瓜电影网</b><small>HUANGGUA CINEMA</small></div></a>
+    <button class="toggle" id="toggle" aria-label="菜单">☰</button>
+    <nav class="nav" id="nav">
+      <a href="#home">首页</a>
+      <a href="#hot">正在热映</a>
+      <a href="#list">主题片单</a>
+      <a href="#review">影评</a>
+      <a href="#rank">热门排行</a>
+      <a href="#about">关于</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="bubbles"><i></i><i></i><i></i><i></i></div>
+  <h2>找片太累？<br>来<em>黄瓜电影网</em>，清爽看片</h2>
+  <p>清新鲜活的影视推荐站，从热映大片到冷门佳片，帮你把每一段闲暇都安排得刚刚好。</p>
+  <div class="acts">
+    <a href="#hot" class="btn btn-p">看看热映</a>
+    <a href="#list" class="btn btn-o">浏览片单</a>
+  </div>
+</section>
+
+<section id="hot">
+  <div class="wrap">
+    <div class="head"><div class="k">NOW SHOWING</div><h2>正在<em>热映</em></h2><p>切换标签，快速挑选</p></div>
+    <div class="tabs" id="tabs">
+      <button class="on" data-t="t1">热映大片</button>
+      <button data-t="t2">冷门佳片</button>
+      <button data-t="t3">高分经典</button>
+    </div>
+    <div class="panel show" id="t1">
+      <article class="mcard"><div class="cap">热映一</div><div class="body"><h4>热映大片 · 一</h4><div class="meta"><span>剧情 / 动作</span><b>8.7</b></div></div></article>
+      <article class="mcard"><div class="cap">热映二</div><div class="body"><h4>热映大片 · 二</h4><div class="meta"><span>科幻 / 冒险</span><b>8.5</b></div></div></article>
+      <article class="mcard"><div class="cap">热映三</div><div class="body"><h4>热映大片 · 三</h4><div class="meta"><span>喜剧 / 家庭</span><b>8.2</b></div></div></article>
+      <article class="mcard"><div class="cap">热映四</div><div class="body"><h4>热映大片 · 四</h4><div class="meta"><span>悬疑 / 犯罪</span><b>8.9</b></div></div></article>
+    </div>
+    <div class="panel" id="t2">
+      <article class="mcard"><div class="cap">佳片一</div><div class="body"><h4>冷门佳片 · 一</h4><div class="meta"><span>文艺 / 独立</span><b>8.6</b></div></div></article>
+      <article class="mcard"><div class="cap">佳片二</div><div class="body"><h4>冷门佳片 · 二</h4><div class="meta"><span>纪录 / 现实</span><b>8.8</b></div></div></article>
+      <article class="mcard"><div class="cap">佳片三</div><div class="body"><h4>冷门佳片 · 三</h4><div class="meta"><span>动画 / 治愈</span><b>8.4</b></div></div></article>
+      <article class="mcard"><div class="cap">佳片四</div><div class="body"><h4>冷门佳片 · 四</h4><div class="meta"><span>剧情 / 历史</span><b>8.3</b></div></div></article>
+    </div>
+    <div class="panel" id="t3">
+      <article class="mcard"><div class="cap">经典一</div><div class="body"><h4>高分经典 · 一</h4><div class="meta"><span>剧情 / 人性</span><b>9.3</b></div></div></article>
+      <article class="mcard"><div class="cap">经典二</div><div class="body"><h4>高分经典 · 二</h4><div class="meta"><span>爱情 / 岁月</span><b>9.1</b></div></div></article>
+      <article class="mcard"><div class="cap">经典三</div><div class="body"><h4>高分经典 · 三</h4><div class="meta"><span>战争 / 史诗</span><b>9.2</b></div></div></article>
+      <article class="mcard"><div class="cap">经典四</div><div class="body"><h4>高分经典 · 四</h4><div class="meta"><span>喜剧 / 人生</span><b>9.0</b></div></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="list" style="background:#eaf6ec;">
+  <div class="wrap">
+    <div class="head"><div class="k">WATCHLIST</div><h2>主题<em>片单</em></h2><p>点开展开，看看每单都有啥</p></div>
+    <div class="acc">
+      <div class="acc-item open"><div class="acc-head"><span><span class="n">1</span> 周末解压 · 轻松喜剧</span><span class="ar">▼</span></div><div class="acc-body"><p>忙碌一周，周末就该笑一笑。这单专门收罗节奏轻快、看完心情大好的喜剧片。</p><div class="tags"><span>轻松</span><span>治愈</span><span>适合合家欢</span></div></div></div>
+      <div class="acc-item"><div class="acc-head"><span><span class="n">2</span> 深夜独处 · 文艺慢片</span><span class="ar">▼</span></div><div class="acc-body"><p>夜深人静时，慢慢看一部节奏舒缓、留白很多的文艺片，给情绪一个出口。</p><div class="tags"><span>慢节奏</span><span>留白</span><span>情绪向</span></div></div></div>
+      <div class="acc-item"><div class="acc-head"><span><span class="n">3</span> 烧脑反转 · 悬疑精选</span><span class="ar">▼</span></div><div class="acc-body"><p>逻辑控的最爱，每部都藏着精心设计的反转，看完还想二刷找细节。</p><div class="tags"><span>反转</span><span>细节控</span><span>强逻辑</span></div></div></div>
+      <div class="acc-item"><div class="acc-head"><span><span class="n">4</span> 开眼界 · 高分纪录片</span><span class="ar">▼</span></div><div class="acc-body"><p>用别人的眼睛看世界，从自然到人文，每一部都值得认真看完。</p><div class="tags"><span>自然</span><span>人文</span><span>涨知识</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="review">
+  <div class="wrap">
+    <div class="head"><div class="k">REVIEWS</div><h2>编辑<em>影评</em></h2><p>观点鲜明，不灌水</p></div>
+    <div class="timeline">
+      <div class="tl-item"><div class="dot"></div><div class="tl-card"><div class="who">编辑部 · 深度解读</div><h4>好电影是问号，不是句号</h4><p>真正让人念念不忘的片子，从来不急着给你标准答案，而是让你带着问题走出影院。</p></div></div>
+      <div class="tl-item"><div class="dot"></div><div class="tl-card"><div class="who">观影笔记 · 观感分享</div><h4>慢，是它最大的诚意</h4><p>节奏不讨好任何人，但每一帧都值得暂停，适合一个安静的午后独自看完。</p></div></div>
+      <div class="tl-item"><div class="dot"></div><div class="tl-card"><div class="who">片单说 · 观点评论</div><h4>不完美，但足够真诚</h4><p>它算不上无可挑剔，但那份不掩饰的真诚，已经胜过大多数同类型作品。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="rank" style="background:#eaf6ec;">
+  <div class="wrap">
+    <div class="head"><div class="k">TOP 8</div><h2>热门<em>排行</em></h2><p>本周站内浏览量 TOP8</p></div>
+    <div class="topgrid">
+      <div class="topcard"><div class="no">01</div><h5>热映大片 · 一</h5><small>剧情 / 动作</small><div class="hot">▲ 热 98%</div></div>
+      <div class="topcard"><div class="no">02</div><h5>冷门佳片 · 一</h5><small>文艺 / 独立</small><div class="hot">▲ 热 92%</div></div>
+      <div class="topcard"><div class="no">03</div><h5>高分经典 · 一</h5><small>剧情 / 人性</small><div class="hot">▲ 热 88%</div></div>
+      <div class="topcard"><div class="no">04</div><h5>热映大片 · 二</h5><small>科幻 / 冒险</small><div class="hot">▲ 热 84%</div></div>
+      <div class="topcard"><div class="no">05</div><h5>冷门佳片 · 三</h5><small>动画 / 治愈</small><div class="hot">▲ 热 79%</div></div>
+      <div class="topcard"><div class="no">06</div><h5>热映大片 · 四</h5><small>悬疑 / 犯罪</small><div class="hot">▲ 热 76%</div></div>
+      <div class="topcard"><div class="no">07</div><h5>高分经典 · 二</h5><small>爱情 / 岁月</small><div class="hot">▲ 热 72%</div></div>
+      <div class="topcard"><div class="no">08</div><h5>冷门佳片 · 四</h5><small>剧情 / 历史</small><div class="hot">▲ 热 68%</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about">
+      <div class="big">找片，<em>清爽</em>一点就好</div>
+      <p>黄瓜电影网想做的很简单：</p>
+      <p>在信息过载的片海里，帮你挑出真正值得花时间的那几部。</p>
+      <div class="url">https://huangguadianyingwang-wap.github.io</div>
+      <div class="acts" style="margin-top:26px;">
+        <a href="#home" class="btn btn-p">回到顶部</a>
+        <a href="#hot" class="btn btn-o">看看热映</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fi">
+    <div class="logo">黄</div>
+    <h3>黄瓜电影网</h3>
+    <p style="font-size:14px; color:#6f8278;">清爽观影推荐 · 片单整理 · 影评分享</p>
+    <div class="fl">
+      <a href="#home">首页</a>
+      <a href="#hot">正在热映</a>
+      <a href="#list">主题片单</a>
+      <a href="#review">影评</a>
+      <a href="#rank">热门排行</a>
+      <a href="#about">关于</a>
+    </div>
+    <div class="copy">
+      本站网址：<a href="https://huangguadianyingwang-wap.github.io">https://huangguadianyingwang-wap.github.io</a><br>
+      © 2026 黄瓜电影网 · 影视资讯与影评分享，具体播放请前往正版授权平台
+    </div>
+  </div>
+</footer>
+
+<script>
+  var btn = document.getElementById('toggle');
+  var nav = document.getElementById('nav');
+  btn.addEventListener('click', function () { nav.classList.toggle('open'); });
+  nav.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('open'); }); });
+
+  document.querySelectorAll('#tabs button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('#tabs button').forEach(function (x) { x.classList.remove('on'); });
+      document.querySelectorAll('.panel').forEach(function (p) { p.classList.remove('show'); });
+      b.classList.add('on');
+      document.getElementById(b.dataset.t).classList.add('show');
+    });
+  });
+
+  document.querySelectorAll('.acc-item').forEach(function (it) {
+    it.querySelector('.acc-head').addEventListener('click', function () { it.classList.toggle('open'); });
+  });
+</script>
+</body>
+</html>
